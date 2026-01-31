@@ -1,0 +1,685 @@
+============================================================
+实验时间: 2025-10-08 21:28:53
+更新描述: 
+运行模式: TRAIN
+--- 配置参数 ---
+  policy: marl
+  num_gnbs: 3
+  users_per_gnb: 10
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 100
+  testing_episode: 200
+  steps_per_episode: 25
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'num_power_levels': 5, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}}
+--- 性能指标 ---
+  最佳平均奖励: 4.1300
+  总训练回合数: 100
+============================================================
+
+============================================================
+实验时间: 2025-10-08 22:20:28
+更新描述: marl
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 3
+  users_per_gnb: 10
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 100
+  testing_episode: 200
+  steps_per_episode: 25
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'num_power_levels': 5, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/'}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/'}}
+--- 性能指标 ---
+  最佳平均奖励: 3.9579
+  总训练回合数: 100
+============================================================
+
+============================================================
+实验时间: 2025-10-09 00:20:40
+更新描述: re train
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 19
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 200
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 19
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'num_power_levels': 5, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/'}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/'}}
+--- 性能指标 ---
+  最佳平均奖励: -7.0842
+  总训练回合数: 200
+============================================================
+
+============================================================
+实验时间: 2025-10-09 00:30:34
+更新描述: num_gnb配置成7
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 200
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 19
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'num_power_levels': 5, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/'}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/'}}
+--- 性能指标 ---
+  最佳平均奖励: 6.5082
+  总训练回合数: 200
+============================================================
+
+============================================================
+实验时间: 2025-10-09 06:43:56
+更新描述: 
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 5000
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 7
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'num_power_levels': 5, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/'}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/'}}
+--- 性能指标 ---
+  最佳平均奖励: 8.1110
+  总训练回合数: 5000
+============================================================
+
+============================================================
+实验时间: 2025-10-09 17:22:54
+更新描述: 
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 100
+  testing_episode: 200
+  steps_per_episode: 25
+  max_gnbs: 7
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'num_power_levels': 5, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/'}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/'}}
+--- 性能指标 ---
+  最佳平均奖励: 5.0824
+  总训练回合数: 100
+============================================================
+
+============================================================
+实验时间: 2025-10-09 18:45:28
+更新描述: 
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 1000
+  testing_episode: 200
+  steps_per_episode: 25
+  max_gnbs: 7
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'num_power_levels': 5, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/'}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/'}}
+--- 性能指标 ---
+  最佳平均奖励: 8.0269
+  总训练回合数: 1000
+============================================================
+
+============================================================
+实验时间: 2025-10-09 19:18:08
+更新描述: 
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 1000
+  testing_episode: 200
+  steps_per_episode: 25
+  max_gnbs: 7
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'num_power_levels': 5, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/'}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/'}}
+--- 性能指标 ---
+  最佳平均奖励: 8.0269
+  总训练回合数: 1000
+============================================================
+
+============================================================
+实验时间: 2025-10-11 10:24:06
+更新描述: 
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 19
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 5000
+  testing_episode: 200
+  steps_per_episode: 25
+  max_gnbs: 19
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'num_power_levels': 5, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/'}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/'}}
+--- 性能指标 ---
+  最佳平均奖励: -0.5632
+  总训练回合数: 5000
+============================================================
+
+============================================================
+实验时间: 2025-10-11 17:12:45
+更新描述: 
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  training_episode: 100
+  testing_episode: 200
+  steps_per_episode: 25
+  max_gnbs: 7
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'num_power_levels': 5, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'IBR': {'save_dir': 'checkpoints/IBR/', 'iterations': 10, 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'qmix': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'lr': 0.0005, 'hidden_dim': 64, 'num_power_levels': 5, 'epsilon_start': 1.0, 'epsilon_decay': 0.9998, 'epsilon_min': 0.05, 'target_update_tau': 0.005, 'save_dir': './checkpoints/QMIX/'}}
+--- 性能指标 ---
+  最佳平均奖励: 4.8070
+  总训练回合数: 100
+============================================================
+
+============================================================
+实验时间: 2025-10-13 04:21:35
+更新描述: train
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  training_episode: 5000
+  testing_episode: 200
+  steps_per_episode: 25
+  max_gnbs: 7
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'num_power_levels': 5, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'IBR': {'save_dir': 'checkpoints/IBR/', 'iterations': 10, 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'qmix': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'lr': 0.0005, 'hidden_dim': 64, 'num_power_levels': 5, 'epsilon_start': 1.0, 'epsilon_decay': 0.9998, 'epsilon_min': 0.05, 'target_update_tau': 0.005, 'save_dir': './checkpoints/QMIX/'}}
+--- 性能指标 ---
+  最佳平均奖励: 7.4115
+  总训练回合数: 5000
+============================================================
+
+============================================================
+实验时间: 2025-10-13 11:28:59
+更新描述: 
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  training_episode: 500
+  testing_episode: 200
+  steps_per_episode: 25
+  max_gnbs: 7
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'warmup_episodes': 20, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'num_power_levels': 5, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'IBR': {'save_dir': 'checkpoints/IBR/', 'iterations': 10, 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'qmix': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'lr': 0.0005, 'hidden_dim': 64, 'num_power_levels': 5, 'epsilon_start': 1.0, 'epsilon_decay': 0.9998, 'epsilon_min': 0.05, 'target_update_tau': 0.005, 'save_dir': './checkpoints/QMIX/'}}
+--- 性能指标 ---
+  最佳平均奖励: 6.1808
+  总训练回合数: 500
+============================================================
+
+============================================================
+实验时间: 2025-10-13 11:46:21
+更新描述: 
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  training_episode: 20
+  testing_episode: 200
+  steps_per_episode: 25
+  max_gnbs: 7
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'warmup_episodes': 20, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'num_power_levels': 5, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'IBR': {'save_dir': 'checkpoints/IBR/', 'iterations': 10, 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'qmix': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'lr': 0.0005, 'hidden_dim': 64, 'num_power_levels': 5, 'epsilon_start': 1.0, 'epsilon_decay': 0.9998, 'epsilon_min': 0.05, 'target_update_tau': 0.005, 'save_dir': './checkpoints/QMIX/'}}
+--- 性能指标 ---
+  最佳平均奖励: 3.4558
+  总训练回合数: 20
+============================================================
+
+============================================================
+实验时间: 2025-10-13 11:53:24
+更新描述: 
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  training_episode: 20
+  testing_episode: 200
+  steps_per_episode: 25
+  max_gnbs: 7
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'warmup_episodes': 20, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'num_power_levels': 5, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'IBR': {'save_dir': 'checkpoints/IBR/', 'iterations': 10, 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'qmix': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'lr': 0.0005, 'hidden_dim': 64, 'num_power_levels': 5, 'epsilon_start': 1.0, 'epsilon_decay': 0.9998, 'epsilon_min': 0.05, 'target_update_tau': 0.005, 'save_dir': './checkpoints/QMIX/'}}
+--- 性能指标 ---
+  最佳平均奖励: 3.4558
+  总训练回合数: 20
+============================================================
+
+============================================================
+实验时间: 2025-10-13 12:17:24
+更新描述: 
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  training_episode: 20
+  testing_episode: 200
+  steps_per_episode: 25
+  max_gnbs: 7
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'warmup_episodes': 20, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'num_power_levels': 5, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'IBR': {'save_dir': 'checkpoints/IBR/', 'iterations': 10, 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'qmix': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'lr': 0.0005, 'hidden_dim': 64, 'num_power_levels': 5, 'epsilon_start': 1.0, 'epsilon_decay': 0.9998, 'epsilon_min': 0.05, 'target_update_tau': 0.005, 'save_dir': './checkpoints/QMIX/'}}
+--- 性能指标 ---
+  最佳平均奖励: 3.5879
+  总训练回合数: 20
+============================================================
+
+============================================================
+实验时间: 2025-10-13 13:19:09
+更新描述: 
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  training_episode: 1000
+  testing_episode: 200
+  steps_per_episode: 25
+  max_gnbs: 7
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'warmup_episodes': 20, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'num_power_levels': 5, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'IBR': {'save_dir': 'checkpoints/IBR/', 'iterations': 10, 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'qmix': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'lr': 0.0005, 'hidden_dim': 64, 'num_power_levels': 5, 'epsilon_start': 1.0, 'epsilon_decay': 0.9998, 'epsilon_min': 0.05, 'target_update_tau': 0.005, 'save_dir': './checkpoints/QMIX/'}}
+--- 性能指标 ---
+  最佳平均奖励: 6.3796
+  总训练回合数: 1000
+============================================================
+
+============================================================
+实验时间: 2025-10-13 14:41:46
+更新描述: 
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  training_episode: 300
+  testing_episode: 200
+  steps_per_episode: 25
+  max_gnbs: 7
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'warmup_episodes': 30, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'num_power_levels': 5, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'IBR': {'save_dir': 'checkpoints/IBR/', 'iterations': 10, 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'qmix': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'lr': 0.0005, 'hidden_dim': 64, 'num_power_levels': 5, 'epsilon_start': 1.0, 'epsilon_decay': 0.9998, 'epsilon_min': 0.05, 'target_update_tau': 0.005, 'save_dir': './checkpoints/QMIX/'}}
+--- 性能指标 ---
+  最佳平均奖励: 6.3516
+  总训练回合数: 300
+============================================================
+
+============================================================
+实验时间: 2025-10-13 15:06:57
+更新描述: 
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  training_episode: 300
+  testing_episode: 200
+  steps_per_episode: 25
+  max_gnbs: 7
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'warmup_episodes': 30, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'num_power_levels': 5, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'IBR': {'save_dir': 'checkpoints/IBR/', 'iterations': 10, 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'qmix': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'lr': 0.0005, 'hidden_dim': 64, 'num_power_levels': 5, 'epsilon_start': 1.0, 'epsilon_decay': 0.9998, 'epsilon_min': 0.05, 'target_update_tau': 0.005, 'save_dir': './checkpoints/QMIX/'}}
+--- 性能指标 ---
+  最佳平均奖励: 4.3646
+  总训练回合数: 300
+============================================================
+
+============================================================
+实验时间: 2025-10-13 20:14:10
+更新描述: 
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  training_episode: 5000
+  testing_episode: 200
+  steps_per_episode: 25
+  max_gnbs: 7
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'warmup_episodes': 30, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'num_power_levels': 5, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'IBR': {'save_dir': 'checkpoints/IBR/', 'iterations': 10, 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'qmix': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'lr': 0.0005, 'hidden_dim': 64, 'num_power_levels': 5, 'epsilon_start': 1.0, 'epsilon_decay': 0.9998, 'epsilon_min': 0.05, 'target_update_tau': 0.005, 'save_dir': './checkpoints/QMIX/'}}
+--- 性能指标 ---
+  最佳平均奖励: 6.7050
+  总训练回合数: 5000
+============================================================
+
+============================================================
+实验时间: 2025-10-14 06:58:28
+更新描述: 
+运行模式: TRAIN
+--- 配置参数 ---
+  model_name: marl
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  training_episode: 8000
+  testing_episode: 200
+  steps_per_episode: 25
+  max_gnbs: 7
+  max_users_per_gnb: 16
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'warmup_episodes': 30, 'save_dir': 'checkpoints/marl/'}, 'dqn': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'num_power_levels': 5, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}, 'gdfp': {'save_dir': 'checkpoints/gdfp/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'randompolicy': {'save_dir': 'checkpoints/randompolicy/', 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'IBR': {'save_dir': 'checkpoints/IBR/', 'iterations': 10, 'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'qmix': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'lr': 0.0005, 'hidden_dim': 64, 'num_power_levels': 5, 'epsilon_start': 1.0, 'epsilon_decay': 0.9998, 'epsilon_min': 0.05, 'target_update_tau': 0.005, 'save_dir': './checkpoints/QMIX/'}}
+--- 性能指标 ---
+  最佳平均奖励: 6.8157
+  总训练回合数: 8000
+============================================================
+
+[2026-01-31 23:47:00] 
+--- 开始 Off-Policy 训练: marl ---
+[2026-01-31 23:47:00] *** Ep 0: New best reward 0.8862 | Saved ***
+[2026-01-31 23:47:00] *** Ep 1: New best reward 0.9341 | Saved ***
+[2026-01-31 23:47:07] *** Ep 5: New best reward 0.9547 | Saved ***
+[2026-01-31 23:47:17] *** Ep 10: New best reward 0.9632 | Saved ***
+[2026-01-31 23:48:17] *** Ep 39: New best reward 0.9801 | Saved ***
+[2026-01-31 23:48:37] *** Ep 48: New best reward 0.9804 | Saved ***
+[2026-01-31 23:48:53] *** Ep 56: New best reward 0.9837 | Saved ***
+[2026-01-31 23:49:20] *** Ep 70: New best reward 1.0063 | Saved ***
+[2026-01-31 23:50:31] *** Ep 106: New best reward 1.0463 | Saved ***
+[2026-01-31 23:52:06] *** Ep 148: New best reward 1.0529 | Saved ***
+[2026-01-31 23:52:45] *** Ep 165: New best reward 1.0820 | Saved ***
+[2026-01-31 23:55:28] *** Ep 223: New best reward 1.1078 | Saved ***
+[2026-01-31 23:56:16] *** Ep 239: New best reward 1.4445 | Saved ***
+[2026-01-31 23:56:47] 
+--- 开始 Off-Policy 训练: marl ---
+[2026-01-31 23:56:47] *** Ep 0: New best reward 0.8974 | Saved ***
+[2026-01-31 23:56:47] [Conv] Ep 0: insufficient history (1/100)
+[2026-01-31 23:56:51] *** Ep 2: New best reward 0.9434 | Saved ***
+[2026-01-31 23:57:18] *** Ep 7: New best reward 0.9694 | Saved ***
+[2026-01-31 23:57:28] [Conv] Ep 10: insufficient history (11/100)
+[2026-01-31 23:57:31] *** Ep 11: New best reward 0.9842 | Saved ***
+[2026-01-31 23:57:45] *** Ep 16: New best reward 0.9843 | Saved ***
+[2026-01-31 23:57:56] [Conv] Ep 20: insufficient history (21/100)
+[2026-01-31 23:58:17] *** Ep 27: New best reward 0.9860 | Saved ***
+[2026-01-31 23:58:25] [Conv] Ep 30: insufficient history (31/100)
+[2026-01-31 23:58:41] *** Ep 35: New best reward 0.9891 | Saved ***
+[2026-01-31 23:58:57] [Conv] Ep 40: insufficient history (41/100)
+[2026-01-31 23:59:03] *** Ep 42: New best reward 0.9922 | Saved ***
+[2026-01-31 23:59:05] *** Ep 43: New best reward 0.9956 | Saved ***
+[2026-01-31 23:59:31] [Conv] Ep 50: insufficient history (51/100)
+[2026-02-01 00:00:18] [Conv] Ep 60: insufficient history (61/100)
+[2026-02-01 00:00:55] [Conv] Ep 70: insufficient history (71/100)
+[2026-02-01 00:01:32] [Conv] Ep 80: insufficient history (81/100)
+[2026-02-01 00:01:40] *** Ep 82: New best reward 1.1905 | Saved ***
+[2026-02-01 00:02:08] [Conv] Ep 90: insufficient history (91/100)
+[2026-02-01 00:02:44] [Conv] Ep 100: win=100 mean=0.898 std=0.069 | stable=False streak=0
+[2026-02-01 00:03:23] [Conv] Ep 110: win=100 mean=0.896 std=0.071 | stable=False streak=0
+[2026-02-01 00:03:58] [Conv] Ep 120: win=100 mean=0.894 std=0.071 | stable=False streak=0
+[2026-02-01 00:04:23] 
+--- 开始 Off-Policy 训练: marl ---
+[2026-02-01 00:04:24] *** Ep 0: New best reward 0.1896 | Saved ***
+[2026-02-01 00:04:24] [Conv] Ep 0: insufficient history (1/100)
+[2026-02-01 00:04:27] *** Ep 3: New best reward 0.2022 | Saved ***
+[2026-02-01 00:04:42] 
+--- 开始 Off-Policy 训练: marl ---
+[2026-02-01 00:04:43] *** Ep 0: New best reward 0.1705 | Saved ***
+[2026-02-01 00:04:43] [Conv] Ep 0: insufficient history (1/100)
+[2026-02-01 00:04:45] *** Ep 1: New best reward 0.1733 | Saved ***
+[2026-02-01 00:04:46] *** Ep 2: New best reward 0.1833 | Saved ***
+[2026-02-01 00:04:49] *** Ep 4: New best reward 0.1837 | Saved ***
+[2026-02-01 00:05:37] 
+--- 开始 Off-Policy 训练: marl ---
+[2026-02-01 00:05:37] *** Ep 0: New best reward 0.1591 | Saved ***
+[2026-02-01 00:05:37] [Conv] Ep 0: insufficient history (1/100)
+[2026-02-01 00:05:38] *** Ep 1: New best reward 0.1682 | Saved ***
+[2026-02-01 00:05:39] *** Ep 3: New best reward 0.1688 | Saved ***
+[2026-02-01 00:05:39] *** Ep 4: New best reward 0.1730 | Saved ***
+[2026-02-01 00:05:57] *** Ep 7: New best reward 0.1834 | Saved ***
+[2026-02-01 00:06:19] *** Ep 10: New best reward 0.1932 | Saved ***
+[2026-02-01 00:06:19] [Conv] Ep 10: insufficient history (11/100)
+[2026-02-01 00:06:36] *** Ep 13: New best reward 0.2799 | Saved ***
+[2026-02-01 00:06:47] *** Ep 5: New best reward 0.1964 | Saved ***
+[2026-02-01 00:07:28] [Conv] Ep 20: insufficient history (21/100)
+[2026-02-01 00:08:36] [Conv] Ep 30: insufficient history (31/100)
+[2026-02-01 00:09:51] [Conv] Ep 40: insufficient history (41/100)
+[2026-02-01 00:11:02] [Conv] Ep 50: insufficient history (51/100)
+[2026-02-01 00:12:13] [Conv] Ep 60: insufficient history (61/100)
+[2026-02-01 00:13:17] [Conv] Ep 70: insufficient history (71/100)
+[2026-02-01 00:14:24] [Conv] Ep 80: insufficient history (81/100)
+[2026-02-01 00:15:35] [Conv] Ep 130: win=100 mean=0.895 std=0.073 | stable=False streak=0
+[2026-02-01 00:15:37] [Conv] Ep 90: insufficient history (91/100)
+[2026-02-01 00:16:57] [Conv] Ep 100: win=100 mean=0.182 std=0.018 | stable=False streak=0
+[2026-02-01 00:17:34] [Conv] Ep 10: insufficient history (11/100)
+[2026-02-01 00:18:09] [Conv] Ep 110: win=100 mean=0.182 std=0.018 | stable=False streak=0
+[2026-02-01 00:18:30] [Conv] Ep 10: insufficient history (11/100)
+[2026-02-01 00:19:15] [Conv] Ep 120: win=100 mean=0.182 std=0.016 | stable=False streak=0
+[2026-02-01 00:20:38] *** Ep 132: New best reward 1.3788 | Saved ***
+[2026-02-01 00:20:51] [Conv] Ep 130: win=100 mean=0.184 std=0.016 | stable=False streak=0
+[2026-02-01 00:22:16] [Conv] Ep 140: win=100 mean=0.183 std=0.016 | stable=False streak=0
+[2026-02-01 00:23:46] [Conv] Ep 150: win=100 mean=0.183 std=0.016 | stable=False streak=0
+[2026-02-01 00:25:02] [Conv] Ep 160: win=100 mean=0.181 std=0.014 | stable=False streak=0
+[2026-02-01 00:26:21] [Conv] Ep 170: win=100 mean=0.182 std=0.013 | stable=False streak=0
+[2026-02-01 00:27:38] [Conv] Ep 180: win=100 mean=0.182 std=0.014 | stable=False streak=0
+[2026-02-01 00:28:56] [Conv] Ep 190: win=100 mean=0.181 std=0.014 | stable=False streak=0
+[2026-02-01 00:30:08] [Conv] Ep 200: win=100 mean=0.181 std=0.013 | delta=-0.001 | stable=True streak=1
+[2026-02-01 00:31:24] [Conv] Ep 210: win=100 mean=0.181 std=0.013 | delta=-0.001 | stable=True streak=2
+[2026-02-01 00:32:40] [Conv] Ep 220: win=100 mean=0.181 std=0.012 | delta=-0.001 | stable=True streak=3 | converged=True
+[2026-02-01 00:34:05] [Conv] Ep 230: win=100 mean=0.180 std=0.012 | delta=-0.003 | stable=True streak=4 | converged=True
+[2026-02-01 00:35:21] [Conv] Ep 240: win=100 mean=0.181 std=0.012 | delta=-0.002 | stable=True streak=5 | converged=True
+[2026-02-01 00:36:37] [Conv] Ep 250: win=100 mean=0.181 std=0.012 | delta=-0.002 | stable=True streak=6 | converged=True
+[2026-02-01 00:37:54] [Conv] Ep 260: win=100 mean=0.181 std=0.013 | delta=0.000 | stable=True streak=7 | converged=True
+[2026-02-01 00:38:35] [Conv] Ep 140: win=100 mean=0.900 std=0.087 | stable=False streak=0
+[2026-02-01 00:39:11] [Conv] Ep 270: win=100 mean=0.182 std=0.013 | delta=-0.000 | stable=True streak=8 | converged=True
+[2026-02-01 00:40:10] [Conv] Ep 20: insufficient history (21/100)
+[2026-02-01 00:40:26] [Conv] Ep 20: insufficient history (21/100)
+[2026-02-01 00:40:36] [Conv] Ep 280: win=100 mean=0.182 std=0.012 | delta=0.001 | stable=True streak=9 | converged=True
+[2026-02-01 00:42:06] [Conv] Ep 290: win=100 mean=0.182 std=0.013 | delta=0.000 | stable=True streak=10 | converged=True
+[2026-02-01 00:42:53] 
+--- 开始 Off-Policy 训练: marl ---
+[2026-02-01 00:42:54] *** Ep 0: New best reward 0.3401 | Saved ***
+[2026-02-01 00:42:54] [Conv] Ep 0: insufficient history (1/100)
+[2026-02-01 00:42:55] *** Ep 5: New best reward 0.3546 | Saved ***
+[2026-02-01 00:43:03] [Conv] Ep 10: insufficient history (11/100)
+[2026-02-01 00:43:27] *** Ep 13: New best reward 0.3546 | Saved ***
+[2026-02-01 00:44:41] [Conv] Ep 20: insufficient history (21/100)
+[2026-02-01 00:45:05] *** Ep 22: New best reward 0.3728 | Saved ***
+[2026-02-01 00:46:47] [Conv] Ep 30: insufficient history (31/100)
+[2026-02-01 00:48:30] [Conv] Ep 40: insufficient history (41/100)
+[2026-02-01 00:50:10] [Conv] Ep 50: insufficient history (51/100)
+[2026-02-01 00:52:09] [Conv] Ep 60: insufficient history (61/100)
+[2026-02-01 00:53:55] [Conv] Ep 70: insufficient history (71/100)
+[2026-02-01 00:54:44] *** Ep 26: New best reward 0.2027 | Saved ***
+[2026-02-01 00:55:40] [Conv] Ep 80: insufficient history (81/100)
+[2026-02-01 00:56:37] *** Ep 86: New best reward 0.3759 | Saved ***
+[2026-02-01 00:57:17] [Conv] Ep 90: insufficient history (91/100)
+[2026-02-01 00:57:30] *** Ep 91: New best reward 0.3862 | Saved ***
+[2026-02-01 00:59:09] [Conv] Ep 100: win=100 mean=0.329 std=0.022 | stable=False streak=0
+[2026-02-01 01:01:17] [Conv] Ep 110: win=100 mean=0.331 std=0.022 | stable=False streak=0
+[2026-02-01 01:01:30] [Conv] Ep 150: win=100 mean=0.900 std=0.086 | stable=False streak=0
+[2026-02-01 01:02:30] *** Ep 115: New best reward 0.5464 | Saved ***
+[2026-02-01 01:03:21] [Conv] Ep 120: win=100 mean=0.335 std=0.030 | stable=False streak=0
+[2026-02-01 01:03:33] [Conv] Ep 30: insufficient history (31/100)
+[2026-02-01 01:04:00] [Conv] Ep 30: insufficient history (31/100)
+[2026-02-01 01:04:03] 
+--- 开始 Off-Policy 训练: marl ---
+[2026-02-01 01:06:16] *** Ep 31: New best reward 0.2239 | Saved ***
+[2026-02-01 01:07:46] 
+--- 开始 Off-Policy 训练: marl ---
+[2026-02-01 01:07:48] *** Ep 0: New best reward 0.3692 | Saved ***
+[2026-02-01 01:07:48] Ep    0/200 (  0.5%) | Reward=0.3692 | Recent-10=0.3692 | Recent-50=0.3692 | Best=0.3692 | Critic_Loss=N/A | Actor_Loss=N/A | SE=3.4275 (R10=3.4275) | QoS=48.7600 (R10=48.7600) | Time=0.0m | Remaining=3.8m
+[2026-02-01 01:07:48] [Conv] Ep 0: insufficient history (1/100)
+[2026-02-01 01:07:49] *** Ep 7: New best reward 0.3714 | Saved ***
+[2026-02-01 01:07:57] Ep   10/200 (  5.5%) | Reward=0.3101 | Recent-10=0.3221 | Recent-50=0.3101 | Best=0.3714 | Critic_Loss=0.060 | Actor_Loss=-0.778 | SE=2.7897 (R10=2.9573) | QoS=75.0800 (R10=71.7040) | Time=0.2m | Remaining=2.9m
+[2026-02-01 01:07:57] [Conv] Ep 10: insufficient history (11/100)
+[2026-02-01 01:09:39] Ep   20/200 ( 10.5%) | Reward=0.3440 | Recent-10=0.3339 | Recent-50=0.3440 | Best=0.3714 | Critic_Loss=0.002 | Actor_Loss=-0.014 | SE=3.2305 (R10=3.0973) | QoS=64.1600 (R10=67.4680) | Time=1.9m | Remaining=16.0m
+[2026-02-01 01:09:39] [Conv] Ep 20: insufficient history (21/100)
+[2026-02-01 01:10:02] *** Ep 22: New best reward 0.3776 | Saved ***
+[2026-02-01 01:11:27] Ep   30/200 ( 15.5%) | Reward=0.3489 | Recent-10=0.3352 | Recent-50=0.3489 | Best=0.3776 | Critic_Loss=0.001 | Actor_Loss=-0.043 | SE=3.2236 (R10=3.0999) | QoS=57.8400 (R10=66.1480) | Time=3.7m | Remaining=20.0m
+[2026-02-01 01:11:27] [Conv] Ep 30: insufficient history (31/100)
+[2026-02-01 01:13:12] Ep   40/200 ( 20.5%) | Reward=0.2690 | Recent-10=0.3162 | Recent-50=0.2690 | Best=0.3776 | Critic_Loss=0.002 | Actor_Loss=0.074 | SE=2.5056 (R10=2.9312) | QoS=102.0800 (R10=76.6560) | Time=5.4m | Remaining=21.0m
+[2026-02-01 01:13:12] [Conv] Ep 40: insufficient history (41/100)
+[2026-02-01 01:15:05] Ep   50/200 ( 25.5%) | Reward=0.3120 | Recent-10=0.3048 | Recent-50=0.3224 | Best=0.3776 | Critic_Loss=0.002 | Actor_Loss=0.031 | SE=2.8138 (R10=2.8005) | QoS=73.3200 (R10=80.8240) | Time=7.3m | Remaining=21.3m
+[2026-02-01 01:15:05] [Conv] Ep 50: insufficient history (51/100)
+[2026-02-01 01:17:30] Ep   60/200 ( 30.5%) | Reward=0.2903 | Recent-10=0.3175 | Recent-50=0.3215 | Best=0.3776 | Critic_Loss=0.002 | Actor_Loss=0.037 | SE=2.6116 (R10=2.9124) | QoS=86.5200 (R10=74.0720) | Time=9.7m | Remaining=22.2m
+[2026-02-01 01:17:30] [Conv] Ep 60: insufficient history (61/100)
+[2026-02-01 01:18:34] *** Ep 36: New best reward 0.2059 | Saved ***
+[2026-02-01 01:20:09] Ep   70/200 ( 35.5%) | Reward=0.3204 | Recent-10=0.3256 | Recent-50=0.3199 | Best=0.3776 | Critic_Loss=0.002 | Actor_Loss=0.063 | SE=2.9519 (R10=3.0130) | QoS=71.3600 (R10=71.0120) | Time=12.4m | Remaining=22.5m
+[2026-02-01 01:20:09] [Conv] Ep 70: insufficient history (71/100)
+[2026-02-01 01:22:22] Ep   80/200 ( 40.5%) | Reward=0.3493 | Recent-10=0.3211 | Recent-50=0.3170 | Best=0.3776 | Critic_Loss=0.003 | Actor_Loss=0.047 | SE=3.2522 (R10=2.9664) | QoS=60.3200 (R10=73.5760) | Time=14.6m | Remaining=21.4m
+[2026-02-01 01:22:22] [Conv] Ep 80: insufficient history (81/100)
+[2026-02-01 01:24:21] Ep   90/200 ( 45.5%) | Reward=0.3697 | Recent-10=0.3312 | Recent-50=0.3200 | Best=0.3776 | Critic_Loss=0.004 | Actor_Loss=0.121 | SE=3.4267 (R10=3.0682) | QoS=49.0800 (R10=68.6680) | Time=16.6m | Remaining=19.8m
+[2026-02-01 01:24:21] [Conv] Ep 90: insufficient history (91/100)
+[2026-02-01 01:26:33] Ep  100/200 ( 50.5%) | Reward=0.3321 | Recent-10=0.3231 | Recent-50=0.3237 | Best=0.3776 | Critic_Loss=0.003 | Actor_Loss=-0.127 | SE=3.0631 (R10=2.9752) | QoS=67.6400 (R10=71.1640) | Time=18.8m | Remaining=18.4m
+[2026-02-01 01:26:33] [Conv] Ep 100: win=100 mean=0.323 std=0.026 | stable=False streak=0
+[2026-02-01 01:26:42] [Conv] Ep 160: win=100 mean=0.901 std=0.087 | stable=False streak=0
+[2026-02-01 01:28:34] Ep  110/200 ( 55.5%) | Reward=0.3214 | Recent-10=0.3213 | Recent-50=0.3245 | Best=0.3776 | Critic_Loss=0.005 | Actor_Loss=-0.016 | SE=2.9325 (R10=2.9544) | QoS=69.2000 (R10=72.0280) | Time=20.8m | Remaining=16.7m
+[2026-02-01 01:28:34] [Conv] Ep 110: win=100 mean=0.323 std=0.027 | stable=False streak=0
+[2026-02-01 01:29:19] [Conv] Ep 40: insufficient history (41/100)
+[2026-02-01 01:29:31] [Conv] Ep 40: insufficient history (41/100)
+[2026-02-01 01:30:34] Ep  120/200 ( 60.5%) | Reward=0.3230 | Recent-10=0.3143 | Recent-50=0.3222 | Best=0.3776 | Critic_Loss=0.005 | Actor_Loss=0.024 | SE=2.9867 (R10=2.8611) | QoS=72.8400 (R10=73.9120) | Time=22.8m | Remaining=14.9m
+[2026-02-01 01:30:34] [Conv] Ep 120: win=100 mean=0.321 std=0.026 | stable=False streak=0
+[2026-02-01 01:32:15] Ep  130/200 ( 65.5%) | Reward=0.3593 | Recent-10=0.3349 | Recent-50=0.3250 | Best=0.3776 | Critic_Loss=0.007 | Actor_Loss=-0.082 | SE=3.3544 (R10=3.0980) | QoS=55.6400 (R10=66.0480) | Time=24.5m | Remaining=12.9m
+[2026-02-01 01:32:15] [Conv] Ep 130: win=100 mean=0.321 std=0.026 | stable=False streak=0
+[2026-02-01 01:34:06] Ep  140/200 ( 70.5%) | Reward=0.3357 | Recent-10=0.3222 | Recent-50=0.3232 | Best=0.3776 | Critic_Loss=0.016 | Actor_Loss=0.210 | SE=3.0862 (R10=2.9575) | QoS=64.7600 (R10=71.6680) | Time=26.3m | Remaining=11.0m
+[2026-02-01 01:34:06] [Conv] Ep 140: win=100 mean=0.322 std=0.025 | stable=False streak=0
+[2026-02-01 01:36:23] Ep  150/200 ( 75.5%) | Reward=0.3052 | Recent-10=0.3238 | Recent-50=0.3233 | Best=0.3776 | Critic_Loss=0.011 | Actor_Loss=-0.029 | SE=2.8894 (R10=2.9783) | QoS=88.5200 (R10=71.0360) | Time=28.6m | Remaining=9.3m
+[2026-02-01 01:36:23] [Conv] Ep 150: win=100 mean=0.323 std=0.023 | stable=False streak=0

@@ -1,0 +1,76 @@
+============================================================
+实验时间: 2025-10-08 15:07:19
+更新描述: 增加了input，用于描述每次实验更新的内容。
+运行模式: TRAIN
+--- 配置参数 ---
+  num_gnbs: 3
+  users_per_gnb: 10
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  critic_hidden_dim: 256
+  actor_hidden_dim: 128
+  critic_lr: 0.0001
+  actor_lr: 0.0003
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 100
+  testing_episode: 500
+--- 性能指标 ---
+  最佳平均奖励: 2.0152
+  总训练回合数: 100
+============================================================
+
+============================================================
+实验时间: 2025-10-08 16:55:18
+更新描述: 增加比对算法random、gdfp、dqn。调整主循环逻辑使得可以通过在config里指定参数来选取算法。现在开始测试。
+运行模式: TRAIN
+--- 配置参数 ---
+  policy: marl
+  num_gnbs: 3
+  users_per_gnb: 10
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  critic_hidden_dim: 256
+  actor_hidden_dim: 128
+  critic_lr: 0.0001
+  actor_lr: 0.0003
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 100
+  testing_episode: 500
+  steps_per_episode: 25
+--- 性能指标 ---
+  最佳平均奖励: 2.0465
+  总训练回合数: 100
+============================================================
+
+============================================================
+实验时间: 2025-10-08 21:00:30
+更新描述: 
+运行模式: TRAIN
+--- 配置参数 ---
+  policy: marl
+  num_gnbs: 3
+  users_per_gnb: 10
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 100
+  testing_episode: 200
+  steps_per_episode: 25
+  model_params: {'marl': {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003}, 'dqn': {'num_power_levels': 5, 'dqn_hidden_dim': 128, 'dqn_lr': 0.0003, 'epsilon_start': 0.95, 'epsilon_decay': 0.9995, 'epsilon_min': 0.05, 'target_update_freq': 100, 'save_dir': 'checkpoints/dqn/'}}
+--- 性能指标 ---
+  最佳平均奖励: 4.5219
+  总训练回合数: 100
+============================================================
+

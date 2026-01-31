@@ -1,0 +1,593 @@
+
+[2026-01-27 23:39:51] === 实验开始 ===
+备注: 用最朴素的 try...except...finally 结构，确保无论发生什么都能记录下来。
+模型: mappo_lagrangian | 模式: train
+配置摘要:
+  model_name: mappo_lagrangian
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 500
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 7
+  max_users_per_gnb: 16
+  特定参数: {'actor_hidden_dim': 128, 'critic_hidden_dim': 256, 'aux_output_dim': 7, 'actor_lr': 0.0003, 'critic_lr': 0.001, 'dual_lr': 0.01, 'gae_lambda': 0.95, 'clip_ratio': 0.2, 'entropy_coef': 0.01, 'aux_coef': 0.5, 'cost_limit': 0.05, 'save_dir': 'checkpoints/mappo_lagrangian/'}
+[2026-01-27 23:39:59] 实验异常中断
+错误信息: 'OnPolicyTrainer' object has no attribute 'cost_history'
+Traceback (most recent call last):
+  File "/home/ywx/AlgorithmRA/resourceallocation2/main.py", line 197, in <module>
+    trainer.train()
+  File "/home/ywx/AlgorithmRA/resourceallocation2/trainer.py", line 174, in train
+    self.cost_history.append(avg_cost)
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'OnPolicyTrainer' object has no attribute 'cost_history'
+
+--------------------------------------------------
+
+[2026-01-27 23:42:07] === 实验开始 ===
+备注: 打开 trainer.py，找到 BaseTrainer 类的 __init__ 方法，添加 self.cost_history = []。
+模型: mappo_lagrangian | 模式: train
+配置摘要:
+  model_name: mappo_lagrangian
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 500
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 7
+  max_users_per_gnb: 16
+  特定参数: {'actor_hidden_dim': 128, 'critic_hidden_dim': 256, 'aux_output_dim': 7, 'actor_lr': 0.0003, 'critic_lr': 0.001, 'dual_lr': 0.01, 'gae_lambda': 0.95, 'clip_ratio': 0.2, 'entropy_coef': 0.01, 'aux_coef': 0.5, 'cost_limit': 0.05, 'save_dir': 'checkpoints/mappo_lagrangian/'}
+[2026-01-27 23:54:40] 实验结束
+结果: {'Best_Reward': -6.516848624933113, 'Final_Cost': 0.26857142857142857}
+--------------------------------------------------
+
+[2026-01-27 23:58:36] === 实验开始 ===
+备注: myenv.py 中包含大量的 Reward Shaping（奖励重塑） 代码（例如手动减去 QoS 惩罚、拥塞惩罚、远见得分等）。
+模型: mappo_lagrangian | 模式: train
+配置摘要:
+  model_name: mappo_lagrangian
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 500
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 7
+  max_users_per_gnb: 16
+  特定参数: {'actor_hidden_dim': 128, 'critic_hidden_dim': 256, 'aux_output_dim': 7, 'actor_lr': 0.0003, 'critic_lr': 0.001, 'dual_lr': 0.01, 'gae_lambda': 0.95, 'clip_ratio': 0.2, 'entropy_coef': 0.01, 'aux_coef': 0.5, 'cost_limit': 0.05, 'save_dir': 'checkpoints/mappo_lagrangian/'}
+[2026-01-28 00:10:45] 实验结束
+结果: {'Best_Reward': 36.06197731007032, 'Final_Cost': 0.22035714285714292}
+--------------------------------------------------
+
+[2026-01-28 00:22:15] === 实验开始 ===
+备注: 数值尺度失配，导致 Critic 网络无法收敛，进而导致 Actor 无法学习到正确的策略。1、L_Critic ~ 40000+: 这是一个极其巨大的 Loss。你的 Reward 约为 30，一个 Episode 长 25 步。累计回报 (Return) 大约为 $30 \times 25 = 750$。神经网络如果不做归一化，直接去拟合 750 这个量级的值，梯度会非常不稳定，导致 Loss 爆炸。2、Reward 不上升: 因为 Critic 无法准确估计价值（Value），计算出的优势函数（Advantage）基本是随机噪声。Actor 网络拿着噪声去更新，自然学不到东西。3、Lambda 持续上升: 因为 Agent 并没有学会规避违规（Cost 维持在 0.25 左右），所以 Lambda 只能不断增加惩罚权重。 解决方法：Reward Scaling、更换 Loss 函数、Value Clipping。
+模型: mappo_lagrangian | 模式: train
+配置摘要:
+  model_name: mappo_lagrangian
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 500
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 7
+  max_users_per_gnb: 16
+  特定参数: {'actor_hidden_dim': 128, 'critic_hidden_dim': 256, 'aux_output_dim': 7, 'actor_lr': 0.0003, 'critic_lr': 0.0003, 'dual_lr': 0.0005, 'gae_lambda': 0.95, 'clip_ratio': 0.2, 'entropy_coef': 0.01, 'aux_coef': 0.1, 'cost_limit': 0.2, 'save_dir': 'checkpoints/mappo_lagrangian/'}
+[2026-01-28 00:22:22] 实验异常中断
+错误信息: 'MAPPOLagrangianFramework' object has no attribute 'batch_size'
+Traceback (most recent call last):
+  File "/home/ywx/AlgorithmRA/resourceallocation2/main.py", line 197, in <module>
+    trainer.train()
+  File "/home/ywx/AlgorithmRA/resourceallocation2/trainer.py", line 168, in train
+    train_info = self.framework.train_step()
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ywx/AlgorithmRA/resourceallocation2/model/mappo_lagrangian.py", line 409, in train_step
+    if len(self.memory.rewards) < self.batch_size:
+                                  ^^^^^^^^^^^^^^^
+AttributeError: 'MAPPOLagrangianFramework' object has no attribute 'batch_size'
+
+--------------------------------------------------
+
+[2026-01-28 00:25:06] === 实验开始 ===
+备注: 虽然把 batch_size 传给了 memory，但忘记把它保存为 self.batch_size，导致 train_step 中无法调用它
+模型: mappo_lagrangian | 模式: train
+配置摘要:
+  model_name: mappo_lagrangian
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 500
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 7
+  max_users_per_gnb: 16
+  特定参数: {'actor_hidden_dim': 128, 'critic_hidden_dim': 256, 'aux_output_dim': 7, 'actor_lr': 0.0003, 'critic_lr': 0.0003, 'dual_lr': 0.0005, 'gae_lambda': 0.95, 'clip_ratio': 0.2, 'entropy_coef': 0.01, 'aux_coef': 0.1, 'cost_limit': 0.2, 'save_dir': 'checkpoints/mappo_lagrangian/'}
+
+[2026-01-28 00:34:57] === 实验开始 ===
+备注: Lambda 和 Loss 经常显示为 0.000，是因为PPO 是 On-Policy 算法，需要存满一个 Batch 才会训练。意味着每 10.24 个回合 (256/25) 才会触发一次 train_step()。不训练的回合（如 Ep 20），train_step() 返回 None，你的 main.py 将 Lambda 默认设为了 0.0 进行打印。2、约束失效 (Cost > Limit, 但 Lambda 不涨。dual_lr (拉格朗日乘子的学习率) 太小了 1、
+模型: mappo_lagrangian | 模式: train
+配置摘要:
+  model_name: mappo_lagrangian
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 500
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 7
+  max_users_per_gnb: 16
+  特定参数: {'actor_hidden_dim': 128, 'critic_hidden_dim': 256, 'aux_output_dim': 7, 'actor_lr': 0.0003, 'critic_lr': 0.0003, 'dual_lr': 0.01, 'gae_lambda': 0.95, 'clip_ratio': 0.2, 'entropy_coef': 0.01, 'aux_coef': 0.1, 'cost_limit': 0.2, 'save_dir': 'checkpoints/mappo_lagrangian/'}
+[2026-01-28 00:35:30] 实验异常中断
+错误信息: cannot access local variable 'last_lambda' where it is not associated with a value
+Traceback (most recent call last):
+  File "/home/ywx/AlgorithmRA/resourceallocation2/main.py", line 197, in <module>
+    trainer.train()
+  File "/home/ywx/AlgorithmRA/resourceallocation2/trainer.py", line 181, in train
+    last_lambda = train_info.get('lambda', last_lambda)
+                                 ^^^^^^^^
+UnboundLocalError: cannot access local variable 'last_lambda' where it is not associated with a value
+
+--------------------------------------------------
+
+[2026-01-28 00:37:31] === 实验开始 ===
+备注: 常规运行
+模型: mappo_lagrangian | 模式: train
+配置摘要:
+  model_name: mappo_lagrangian
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 500
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 7
+  max_users_per_gnb: 16
+  特定参数: {'actor_hidden_dim': 128, 'critic_hidden_dim': 256, 'aux_output_dim': 7, 'actor_lr': 0.0003, 'critic_lr': 0.0003, 'dual_lr': 0.01, 'gae_lambda': 0.95, 'clip_ratio': 0.2, 'entropy_coef': 0.01, 'aux_coef': 0.1, 'cost_limit': 0.2, 'save_dir': 'checkpoints/mappo_lagrangian/'}
+[2026-01-28 00:37:57] 实验异常中断
+错误信息: cannot access local variable 'last_lambda' where it is not associated with a value
+Traceback (most recent call last):
+  File "/home/ywx/AlgorithmRA/resourceallocation2/main.py", line 197, in <module>
+    trainer.train()
+  File "/home/ywx/AlgorithmRA/resourceallocation2/trainer.py", line 182, in train
+    last_lambda = train_info.get('lambda', last_lambda)
+                                 ^^^^^^^^
+UnboundLocalError: cannot access local variable 'last_lambda' where it is not associated with a value
+
+--------------------------------------------------
+
+[2026-01-28 00:51:49] === 实验开始 ===
+备注: 在代码中试图读取 last_lambda 的值（作为 .get() 的默认值），但是在这一行之前，这个变量在当前函数内还没有被赋值（定义）过
+模型: mappo_lagrangian | 模式: train
+配置摘要:
+  model_name: mappo_lagrangian
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 500
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 7
+  max_users_per_gnb: 16
+  特定参数: {'actor_hidden_dim': 128, 'critic_hidden_dim': 256, 'aux_output_dim': 7, 'actor_lr': 0.0003, 'critic_lr': 0.0003, 'dual_lr': 0.01, 'gae_lambda': 0.95, 'clip_ratio': 0.2, 'entropy_coef': 0.01, 'aux_coef': 0.1, 'cost_limit': 0.2, 'save_dir': 'checkpoints/mappo_lagrangian/'}
+
+[2026-01-28 00:55:56] === 实验开始 ===
+备注: 常规运行
+模型: mappo_lagrangian | 模式: train
+配置摘要:
+  model_name: mappo_lagrangian
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 500
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 7
+  max_users_per_gnb: 16
+  特定参数: {'actor_hidden_dim': 128, 'critic_hidden_dim': 256, 'aux_output_dim': 7, 'actor_lr': 0.0003, 'critic_lr': 0.0003, 'dual_lr': 0.01, 'gae_lambda': 0.95, 'clip_ratio': 0.2, 'entropy_coef': 0.01, 'aux_coef': 0.1, 'cost_limit': 0.2, 'save_dir': 'checkpoints/mappo_lagrangian/'}
+[2026-01-28 01:06:57] 实验结束
+结果: {'Best_Reward': 36.25738040367328, 'Final_Cost': 0.23571428571428574}
+--------------------------------------------------
+
+[2026-01-28 14:03:10] === 实验开始 ===
+备注: 通过claude code调整了代码，希望能解决奖励不提高的问题
+模型: mappo_lagrangian | 模式: train
+配置摘要:
+  model_name: mappo_lagrangian
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 500
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 7
+  max_users_per_gnb: 16
+  特定参数: {'actor_hidden_dim': 128, 'critic_hidden_dim': 256, 'aux_output_dim': 7, 'actor_lr': 0.0003, 'critic_lr': 0.0003, 'dual_lr': 0.01, 'gae_lambda': 0.95, 'clip_ratio': 0.2, 'entropy_coef': 0.01, 'aux_coef': 0.1, 'cost_limit': 0.2, 'save_dir': 'checkpoints/mappo_lagrangian/'}
+[2026-01-28 14:05:07] 实验结束
+结果: {'Best_Reward': 36.23853144645265, 'Final_Cost': 0.20964285714285713}
+--------------------------------------------------
+
+[2026-01-28 14:08:38] === 实验开始 ===
+备注: claude code 调试
+模型: mappo_lagrangian | 模式: train
+配置摘要:
+  model_name: mappo_lagrangian
+  num_gnbs: 7
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.1
+  trainging_episode: 500
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 7
+  max_users_per_gnb: 16
+  特定参数: {'actor_hidden_dim': 128, 'critic_hidden_dim': 256, 'aux_output_dim': 7, 'actor_lr': 0.0003, 'critic_lr': 0.0003, 'dual_lr': 0.01, 'gae_lambda': 0.95, 'clip_ratio': 0.2, 'entropy_coef': 0.01, 'aux_coef': 0.1, 'cost_limit': 0.2, 'save_dir': 'checkpoints/mappo_lagrangian/'}
+[2026-01-28 14:10:36] 实验结束
+结果: {'Best_Reward': 36.13964051316761, 'Final_Cost': 0.22500000000000003}
+--------------------------------------------------
+
+[2026-01-31 23:46:59] === 实验开始 ===
+备注: 常规运行
+模型: marl | 模式: train
+配置摘要:
+  model_name: marl
+  num_gnbs: 19
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 64
+  prediction_noise_std: 0.1
+  debug: True
+  debug_every: 50
+  trainging_episode: 4000
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 19
+  max_users_per_gnb: 16
+  特定参数: {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'save_dir': 'checkpoints/marl/'}
+
+[2026-01-31 23:56:46] === 实验开始 ===
+备注: 常规运行
+模型: marl | 模式: train
+配置摘要:
+  model_name: marl
+  num_gnbs: 19
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 64
+  prediction_noise_std: 0.1
+  convergence_window: 100
+  convergence_delta: 0.01
+  convergence_std: 0.05
+  convergence_patience: 3
+  convergence_log_every: 10
+  trainging_episode: 4000
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 19
+  max_users_per_gnb: 16
+  特定参数: {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 0.0001, 'actor_lr': 0.0003, 'save_dir': 'checkpoints/marl/'}
+
+[2026-02-01 00:04:22] === 实验开始 ===
+备注: 常规运行
+模型: marl | 模式: train
+配置摘要:
+  model_name: marl
+  num_gnbs: 19
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 128
+  prediction_noise_std: 0.05
+  reward_scale_factor: 0.2
+  convergence_window: 100
+  convergence_delta: 0.01
+  convergence_std: 0.05
+  convergence_patience: 3
+  convergence_log_every: 10
+  trainging_episode: 500
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 19
+  max_users_per_gnb: 16
+  特定参数: {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 5e-05, 'actor_lr': 0.0001, 'save_dir': 'checkpoints/marl/'}
+
+[2026-02-01 00:04:41] === 实验开始 ===
+备注: 常规运行
+模型: marl | 模式: train
+配置摘要:
+  model_name: marl
+  num_gnbs: 19
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 128
+  prediction_noise_std: 0.05
+  reward_scale_factor: 0.2
+  convergence_window: 100
+  convergence_delta: 0.01
+  convergence_std: 0.05
+  convergence_patience: 3
+  convergence_log_every: 10
+  trainging_episode: 500
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 19
+  max_users_per_gnb: 16
+  特定参数: {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 5e-05, 'actor_lr': 0.0001, 'save_dir': 'checkpoints/marl/'}
+
+[2026-02-01 00:05:35] === 实验开始 ===
+备注: 常规运行
+模型: marl | 模式: train
+配置摘要:
+  model_name: marl
+  num_gnbs: 19
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 128
+  prediction_noise_std: 0.05
+  reward_scale_factor: 0.2
+  convergence_window: 100
+  convergence_delta: 0.01
+  convergence_std: 0.05
+  convergence_patience: 3
+  convergence_log_every: 10
+  trainging_episode: 500
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 19
+  max_users_per_gnb: 16
+  特定参数: {'critic_hidden_dim': 256, 'actor_hidden_dim': 128, 'critic_lr': 5e-05, 'actor_lr': 0.0001, 'save_dir': 'checkpoints/marl/'}
+
+[2026-02-01 00:42:50] === 实验开始 ===
+备注: 常规运行
+模型: marl | 模式: train
+配置摘要:
+  model_name: marl
+  num_gnbs: 19
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.0
+  reward_scale_factor: 0.5
+  convergence_window: 100
+  convergence_delta: 0.01
+  convergence_std: 0.05
+  convergence_patience: 3
+  convergence_log_every: 10
+  trainging_episode: 200
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 19
+  max_users_per_gnb: 16
+  特定参数: {'critic_hidden_dim': 512, 'actor_hidden_dim': 256, 'critic_lr': 0.0001, 'actor_lr': 0.0002, 'save_dir': 'checkpoints/marl/'}
+
+[2026-02-01 01:04:01] === 实验开始 ===
+备注: 常规运行
+模型: marl | 模式: train
+配置摘要:
+  model_name: marl
+  num_gnbs: 19
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.0
+  reward_scale_factor: 0.5
+  convergence_window: 100
+  convergence_delta: 0.01
+  convergence_std: 0.05
+  convergence_patience: 3
+  convergence_log_every: 10
+  trainging_episode: 200
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 19
+  max_users_per_gnb: 16
+  特定参数: {'critic_hidden_dim': 512, 'actor_hidden_dim': 256, 'critic_lr': 0.0001, 'actor_lr': 0.0002, 'save_dir': 'checkpoints/marl/'}
+[2026-02-01 01:04:03] 实验异常中断
+错误信息: mat1 and mat2 shapes cannot be multiplied (1x112 and 93x256)
+Traceback (most recent call last):
+  File "/home/hymn/ywx/main.py", line 210, in <module>
+    trainer.train()
+  File "/home/hymn/ywx/trainer.py", line 291, in train
+    res = self._get_action(state, use_exploration=True)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hymn/ywx/trainer.py", line 63, in _get_action
+    return self.framework.hierarchical_decision(state, use_exploration=use_exploration)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hymn/ywx/model/mymodel_graph_2601230.py", line 307, in hierarchical_decision
+    full_channel_actions, full_power_actions = agent.select_action(
+                                               ^^^^^^^^^^^^^^^^^^^^
+  File "/home/hymn/ywx/model/mymodel_graph_2601230.py", line 69, in select_action
+    channel_probs, power_output = self.actor(obs_tensor)
+                                  ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hymn/miniconda3/envs/msyang/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hymn/miniconda3/envs/msyang/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hymn/ywx/model/mymodel_graph_2601230.py", line 40, in forward
+    channel_logits = self.channel_net(obs).view(-1, self.num_users, self.num_channels)
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hymn/miniconda3/envs/msyang/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hymn/miniconda3/envs/msyang/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hymn/miniconda3/envs/msyang/lib/python3.12/site-packages/torch/nn/modules/container.py", line 253, in forward
+    input = module(input)
+            ^^^^^^^^^^^^^
+  File "/home/hymn/miniconda3/envs/msyang/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hymn/miniconda3/envs/msyang/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hymn/miniconda3/envs/msyang/lib/python3.12/site-packages/torch/nn/modules/linear.py", line 134, in forward
+    return F.linear(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: mat1 and mat2 shapes cannot be multiplied (1x112 and 93x256)
+
+--------------------------------------------------
+
+[2026-02-01 01:05:57] === 实验开始 ===
+备注: 常规运行
+模型: marl | 模式: train
+配置摘要:
+  model_name: marl
+  num_gnbs: 19
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.0
+  reward_scale_factor: 0.5
+  convergence_window: 100
+  convergence_delta: 0.01
+  convergence_std: 0.05
+  convergence_patience: 3
+  convergence_log_every: 10
+  trainging_episode: 200
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 19
+  max_users_per_gnb: 16
+  特定参数: {'critic_hidden_dim': 512, 'actor_hidden_dim': 256, 'critic_lr': 0.0001, 'actor_lr': 0.0002, 'save_dir': 'checkpoints/marl/'}
+[2026-02-01 01:05:59] 实验异常中断
+错误信息: ReduceLROnPlateau.__init__() got an unexpected keyword argument 'verbose'
+Traceback (most recent call last):
+  File "/home/hymn/ywx/main.py", line 206, in <module>
+    trainer = get_trainer(config)
+              ^^^^^^^^^^^^^^^^^^^
+  File "/home/hymn/ywx/main.py", line 171, in get_trainer
+    framework = SatTerrestrialHPGAMARLFramework(config)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/hymn/ywx/model/mymodel_graph_2601230.py", line 278, in __init__
+    self.critic_scheduler = ReduceLROnPlateau(
+                            ^^^^^^^^^^^^^^^^^^
+TypeError: ReduceLROnPlateau.__init__() got an unexpected keyword argument 'verbose'
+
+--------------------------------------------------
+
+[2026-02-01 01:07:44] === 实验开始 ===
+备注: 常规运行
+模型: marl | 模式: train
+配置摘要:
+  model_name: marl
+  num_gnbs: 19
+  users_per_gnb: 16
+  num_channels: 10
+  terrestrial_qos_mbps: 10
+  satellite_qos_mbps: 20
+  buffer_size: 500000
+  gamma: 0.99
+  batch_size: 256
+  prediction_noise_std: 0.0
+  reward_scale_factor: 0.5
+  convergence_window: 100
+  convergence_delta: 0.01
+  convergence_std: 0.05
+  convergence_patience: 3
+  convergence_log_every: 10
+  trainging_episode: 200
+  testing_episode: 200
+  steps_per_episode: 25
+  max_num_gnbs: 19
+  max_users_per_gnb: 16
+  特定参数: {'critic_hidden_dim': 512, 'actor_hidden_dim': 256, 'critic_lr': 0.0001, 'actor_lr': 0.0002, 'save_dir': 'checkpoints/marl/'}
