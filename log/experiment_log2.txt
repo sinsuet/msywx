@@ -591,3 +591,6 @@ TypeError: ReduceLROnPlateau.__init__() got an unexpected keyword argument 'verb
   max_num_gnbs: 19
   max_users_per_gnb: 16
   特定参数: {'critic_hidden_dim': 512, 'actor_hidden_dim': 256, 'critic_lr': 0.0001, 'actor_lr': 0.0002, 'save_dir': 'checkpoints/marl/'}
+[2026-02-01 01:46:37] 实验结束
+结果: {'Best_Reward': np.float64(0.5420439344631083), 'Final_Cost': None}
+--------------------------------------------------

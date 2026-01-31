@@ -683,3 +683,15 @@
 [2026-02-01 01:34:06] [Conv] Ep 140: win=100 mean=0.322 std=0.025 | stable=False streak=0
 [2026-02-01 01:36:23] Ep  150/200 ( 75.5%) | Reward=0.3052 | Recent-10=0.3238 | Recent-50=0.3233 | Best=0.3776 | Critic_Loss=0.011 | Actor_Loss=-0.029 | SE=2.8894 (R10=2.9783) | QoS=88.5200 (R10=71.0360) | Time=28.6m | Remaining=9.3m
 [2026-02-01 01:36:23] [Conv] Ep 150: win=100 mean=0.323 std=0.023 | stable=False streak=0
+[2026-02-01 01:38:31] Ep  160/200 ( 80.5%) | Reward=0.3491 | Recent-10=0.3364 | Recent-50=0.3263 | Best=0.3776 | Critic_Loss=0.008 | Actor_Loss=-0.034 | SE=3.1892 (R10=3.1018) | QoS=55.2400 (R10=64.8040) | Time=30.7m | Remaining=7.4m
+[2026-02-01 01:38:31] [Conv] Ep 160: win=100 mean=0.325 std=0.024 | stable=False streak=0
+[2026-02-01 01:40:37] *** Ep 170: New best reward 0.5420 | Saved ***
+[2026-02-01 01:40:37] Ep  170/200 ( 85.5%) | Reward=0.5420 | Recent-10=0.3607 | Recent-50=0.3356 | Best=0.5420 | Critic_Loss=0.008 | Actor_Loss=-0.079 | SE=2.7280 (R10=3.0995) | QoS=79.3200 (R10=64.0920) | Time=32.8m | Remaining=5.6m
+[2026-02-01 01:40:37] [Conv] Ep 170: win=100 mean=0.329 std=0.032 | stable=False streak=0
+[2026-02-01 01:42:50] Ep  180/200 ( 90.5%) | Reward=0.2911 | Recent-10=0.3245 | Recent-50=0.3335 | Best=0.5420 | Critic_Loss=0.012 | Actor_Loss=0.220 | SE=2.5712 (R10=2.9805) | QoS=81.8800 (R10=70.0240) | Time=35.1m | Remaining=3.7m
+[2026-02-01 01:42:50] [Conv] Ep 180: win=100 mean=0.329 std=0.032 | stable=False streak=0
+[2026-02-01 01:44:39] Ep  190/200 ( 95.5%) | Reward=0.3049 | Recent-10=0.3314 | Recent-50=0.3354 | Best=0.5420 | Critic_Loss=0.016 | Actor_Loss=0.166 | SE=2.7683 (R10=3.0186) | QoS=78.8800 (R10=64.7440) | Time=36.9m | Remaining=1.7m
+[2026-02-01 01:44:39] [Conv] Ep 190: win=100 mean=0.329 std=0.030 | stable=False streak=0
+[2026-02-01 01:46:37] History saved to checkpoints/marl/reward_history_marl_train.csv
+[2026-02-01 01:53:21] [Conv] Ep 170: win=100 mean=0.900 std=0.088 | stable=False streak=0
+[2026-02-01 01:54:08] [Conv] Ep 50: insufficient history (51/100)
